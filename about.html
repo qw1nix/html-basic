@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<br lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+</head>
+<br>
+    <h2>About</h2>
+<span>This repository contains the code of end-to-end tests, written in Cypress framework<a target="_blank" href="(https://docs.cypress.io/guides/getting-started/writing-your-first-test)"></a>. Main pattern used for this project - is Page Object. We describe elements of pages and the way they can behave (pages folder). We describe actions, which we use to interact with pages (actions folder). And describe test specs (integration folder) - things/flows we want to test and verify on our pages, using actions to put the app in a required state.</span>
+<br>
+<span>There are several main folders of these project:</span>
+</br>
+<br>
+<div>.github - contains GitHub actions workflows files</div>
+<div>cypress - base folder, that contains the following:</div>
+<ul>
+    <li>actions - contains classes with methods which describe the interaction with pages. Contains subfolders, named by application's tabs.</li>
+    <li>fixtures - contains test data, named by test spec names. Data is stored in js files for convenient exporting and autocompletion.</li>
+    <li>integration - contains test specs</li>
+    <li>pages - contains classes, which describe what elements different pages have and how pages can behave. Contains subfolders, named by application's tabs. Also contains manager files for each folder, that accumulates files of folder to one manager file to prevent big amount of imports in specs.</li>
+    <li>plugins - contains index.js file, that can be used to tap into plugins, modify, or extend the internal behavior of Cypress.</li>
+    <li>support - contains three files:</li>
+</ul>
+<ul type="square">
+    <li>commands.js - contains custom cypress commands</li>
+    <li>index.d.ts - contains types definitions for custom cypress commands.</li>
+    <li>index.js - used for enabling additional modules for cypress</li>
+</ul>
+   <div>utils - folder for helper functions. Contains useful functions validating format of data, working with uploading fixtures, acquiring baseUrl for current environment of test run.</div>
+</br>
+</body>
+</html>
