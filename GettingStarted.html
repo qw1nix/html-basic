@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting started</title>
+</head>
+<body>
+    <h2>Getting started</h2>
+        <h3>System requirements</h3>
+        <ul>
+            <li>(Windows users) <a href="https://docs.microsoft.com/en-us/windows/wsl/install">WSL2</a> (Windows Subsystem for Linux). We use Ubuntu 20.04 and you need to <a href="https://docs.microsoft.com/en-us/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2">use version 2 of WSL</a>.</li>
+            <li>Docker. Get it for your system from <a href="https://docs.docker.com/get-docker/">here</a>.If you use Windows - please, <a href="https://docs.docker.com/desktop/windows/wsl/">use WSL 2 based engine</a> for Docker.</li>
+        </ul>
+        <h3>General prerequisites</h3>
+        <ol>
+            <li>Install <mark>nvm</mark>(<a href="https://github.com/nvm-sh/nvm">macOS/Linux</a>, <a href="https://github.com/coreybutler/nvm-windows">Windows</a>).</li>
+            <li><b>WARN: please, use lts version of node 16. , currently (05.05.22) - lts/gallium*</b> Install lts node version. Run <mark>nvm install lts</mark></li>
+            <li>Run <mark>nvm use lts</mark> to use it.</li>
+        </ol>
+        <h3>Setup</h3>
+        <ol>
+            <li>Clone repo</li>
+            <li>Install packages. Run <mark>npm i</mark></li>
+            <li>Add <mark>cypress.env.json</mark> file to the root of project with following format:</li>
+        </ol>
+        <code>
+    <pre>
+ {
+   "USERNAME": "value", 
+   "PASSWORD": "value"
+ }
+    </pre>
+        </code>
+</body>
+</html>
