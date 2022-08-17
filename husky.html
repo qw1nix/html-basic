@@ -8,21 +8,21 @@
 </head>
 <body>
     <h2>Using Husky</h2>
-        <div class="husky1">Husky is a tool that allows custom scripts to be ran against your repository. Currently husky pre-commit hook is set up in that way so 2 scripts are executed: lint:run and tsc:check.
+        <div class="husky">Husky is a tool that allows custom scripts to be ran against your repository. Currently husky pre-commit hook is set up in that way so 2 scripts are executed: lint:run and tsc:check.
             </div>
     <h5>Create a hook</h5>
-        <div class="husky2">To add a command to a hook or create a new one, use <mark>husky add <file> [cmd]</mark>
+        <div class="hook">To add a command to a hook or create a new one, use <mark>husky add <file> [cmd]</mark>
             </div>
-        <div class="husky3"><mark>npx husky add .husky/pre-commit "npm test"</mark>
+        <div class="npx husky"><mark>npx husky add .husky/pre-commit "npm test"</mark>
             </div>
-        <div class="husky4"><mark>git add .husky/pre-commit</mark>
+        <div class="git add"><mark>git add .husky/pre-commit</mark>
             </div>
-        <div class="husky5">Try to make a commit<mark>git commit -m "Keep calm and commit"</mark>
+        <div class="commit">Try to make a commit<mark>git commit -m "Keep calm and commit"</mark>
             </div>
-        <div class="husky6">If <i>npm test</i> command fails, your commit will be automatically aborted.
+        <div class="npm test">If <i>npm test</i> command fails, your commit will be automatically aborted.
             </div>
     <h5>Note</h5>
-    <div class="husky7">Husky is currently not working with VScode UI commits, so to prevent "broken" commits get into repository use git commands in terminal
+    <div class="note">Husky is currently not working with VScode UI commits, so to prevent "broken" commits get into repository use git commands in terminal
     </div>
     <a href="https://typicode.github.io/husky/#/">husky documentation</a>
 </body>
