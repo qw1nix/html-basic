@@ -10,10 +10,10 @@
     <h2>Usage</h2>
             <div class="usage">General way to run all cypress tests to run <mark>npx cypress run</mark> command. This command will run all existing test spec headless in electron browser at staging environment, using Api login method by default. General way to open cypress GUI is to run <mark>npx cypress open</mark> command.
         </div>
-            <div class="package.json"> <mark>package.json</mark> file in <mark>"scripts":</mark> property contains ready to use commands for some mostly used cases. For example <mark>npm run cy:open</mark> command will open cypress GUI, <mark>npm run cy:chrome_headed_prod_api</mark> will run all tests in chrome headed browser at production environment, using Api login method etc.
+            <div class="package-json"> <mark>package.json</mark> file in <mark>"scripts":</mark> property contains ready to use commands for some mostly used cases. For example <mark>npm run cy:open</mark> command will open cypress GUI, <mark>npm run cy:chrome_headed_prod_api</mark> will run all tests in chrome headed browser at production environment, using Api login method etc.
         </div>
             <h3>Development flow</h3>
-                <div class="Development">We don't have strict rules for our development flow. Everything is pretty standard:
+                <div class="development">We don't have strict rules for our development flow. Everything is pretty standard:
             </div>
             <div class="ticket">
                 <ol>
@@ -43,7 +43,7 @@
         <div class="flag">About cypress command line and it's general flags can be read <a href="https://docs.cypress.io/guides/guides/command-line">here</a>. 
             </div>
                 <br>
-        <div class="Project's">Project's specific environment variables for <mark>--env</mark> flag: 
+        <div class="project">Project's specific environment variables for <mark>--env</mark> flag: 
             </div>
             <div class="values">
                 <ol>
@@ -55,17 +55,17 @@
         <h3>GH Actions debug</h3>
             <div class="action">If your task will be connected with GH Actions changes or you would like to check how your newly implemnted test can behave in GH Actions - you should use <a href="https://github.com/nektos/act">act</a> , rather then commit a lot of times into the repo and trigger the real pipeline.
                 </div>
-            <div class="Main flow">Main flow of how we use act for this repo - described in txt file in <a href="https://github.com/JLBLine/PUMA/blob/master/install_notes.txt">these notes</a> .
+            <div class="main-flow">Main flow of how we use act for this repo - described in txt file in <a href="https://github.com/JLBLine/PUMA/blob/master/install_notes.txt">these notes</a> .
                 </div>
         <h3>Validation of export</h3>
             <div class="export">Since we have a lot of test cases which has validation of Report Export (it will <mark>*.docx</mark> file) - we had to find the way we could automate these checks somehow.
                 </div>
             <div class="automation">We found a way we can somehow automate it - we convert <mark>docx</mark> file into html and then open it in Cypress.
                 </div>
-            <div class="code tests">You can refer to <a href="https://gitlab.com/gitlab-org/gitlab/-/merge_requests/79703">QA-4053 spec</a> to see the code of such tests.
+            <div class="code-tests">You can refer to <a href="https://gitlab.com/gitlab-org/gitlab/-/merge_requests/79703">QA-4053 spec</a> to see the code of such tests.
                 </div>
         <h5>Flow for ReportExport checks</h5>
-            <div class="ReportExport">
+            <div class="report-export">
                 <ol>
                 <li>(1st <mark>it</mark> in <mark>describe</mark>) Your test creates report.</li>
                 <li>(1st <mark>it</mark> in <mark>describe</mark>) Your test downloads report. Report has <mark>job_id.docx</mark> name and stored in <mark>cypress/download</mark>. Inside method <mark>downloadAndConvertDocxReport()</mark> we call several tasks (code which executes in nodejs): wait until file showed up in filesystem -> we convert docx into html -> we rename docx file from <mark>job_id.docx</mark> to <mark>QA-test_case_number.docx</mark> -> we rename html file from <mark>job_id.html</mark> to <mark>QA-test_case_number.html</mark></li>
@@ -75,7 +75,7 @@
                     Cypress.config().baseUrl = null;
                 </pre>
             </code>
-                <div class="baseurl">This will set baseUrl of <mark>cypress.json</mark> to <mark>null</mark> and reload browser's window, which eventually made possible to navigate to static html page in filesystem. Without it - Cypress will consider relative path of html report as path to web resource (will navigate to <mark>http://baseUrl.com/cypress/downloads/TestAutoReport-QA-4719 - 462 1st Avenue, Manhattan, NY 10016.docx.html</mark> , for example).
+                <div class="base-url">This will set baseUrl of <mark>cypress.json</mark> to <mark>null</mark> and reload browser's window, which eventually made possible to navigate to static html page in filesystem. Without it - Cypress will consider relative path of html report as path to web resource (will navigate to <mark>http://baseUrl.com/cypress/downloads/TestAutoReport-QA-4719 - 462 1st Avenue, Manhattan, NY 10016.docx.html</mark> , for example).
                 </div>
                 <li>(2nd <mark>it</mark> in <mark>describe</mark>) Your test opens generated html report in Cypress (Cypress can't (well, until <a href="https://github.com/cypress-io/cypress/releases/tag/v9.6.0">release 9.6.0</a> ) <a href="https://docs.cypress.io/guides/guides/web-security#Same-superdomain-per-test">visit other origin url</a> )</li>
                 <li>(2nd <mark>it</mark> in <mark>describe</mark>) Your test makes traverse and assert on generated html report.</li>
@@ -96,34 +96,34 @@
         <h5>How to use:</h5>
             <div class="urls">Pass <mark>--env url=key_of_the_env</mark> (urls and their keys defined in <a href="https://github.com/ethers-io/ethers-ens/blob/master/src.ts/index.ts">ENVS</a>)
         </div>
-            <div class="GUI">Opens Cypress GUI with dev url:
+            <div class="gui">Opens Cypress GUI with dev url:
         </div>
         <code>
             <pre>
                 npm run cy:open -- --env url=dev
             </pre>
         </code>
-            <div class="GUI custom">Opens Cypress GUI with custom url:
+            <div class="gui-custom">Opens Cypress GUI with custom url:
         </div>
         <code>
             <pre>
                 npm run cy:open -- --env url=custom,customUrl='https://playwright.dev'
             </pre>
         </code>
-            <div class="CI"><b>The same approach</b> remains for <mark>npx cypress run</mark> and CI runs.
+            <div class="ci"><b>The same approach</b> remains for <mark>npx cypress run</mark> and CI runs.
         </div>
-            <div class="info about CL">In CI we have check whether <mark>url==custom</mark> and in that case assign <mark>customUrl</mark>.
+            <div class="info-about-ci">In CI we have check whether <mark>url==custom</mark> and in that case assign <mark>customUrl</mark>.
         </div>
-            <div class="dynamically set URL">Previously, we were selecting specific url to run the tests with help of <a href="https://docs.cypress.io/guides/guides/environment-variables">Cypress environmental variables</a>, but our <mark>baseUrl</mark> in <mark>cypress.json</mark> wasn't set. It <a href="https://docs.cypress.io/guides/references/best-practices#Setting-a-global-baseUrl">wasn't a good approach</a>, but it allowed us dynamically set the url to visit and url for api requests. <b>BUT ALSO</b> our <mark>before/beforeEach</mark> hooks were executing two time (two time of login through api). And if we would try to create report - we would create two report and were working in the second one.
+            <div class="dynamically-set-url">Previously, we were selecting specific url to run the tests with help of <a href="https://docs.cypress.io/guides/guides/environment-variables">Cypress environmental variables</a>, but our <mark>baseUrl</mark> in <mark>cypress.json</mark> wasn't set. It <a href="https://docs.cypress.io/guides/references/best-practices#Setting-a-global-baseUrl">wasn't a good approach</a>, but it allowed us dynamically set the url to visit and url for api requests. <b>BUT ALSO</b> our <mark>before/beforeEach</mark> hooks were executing two time (two time of login through api). And if we would try to create report - we would create two report and were working in the second one.
         </div>
         <h3>AWS secrets (User Roles and etc)</h3>
             <div class="secret">We have tests which requires login as specific user (Lead Appraiser, Appraiser user, Admin and etc), you can find them by <mark>@permissions_roles</mark> tag.
         </div>
             <div class="json">We could've store these secrets in GH Actions secrets, but in that case we won't have an option to edit them (especially, if we store a pretty big <mark>json</mark> ).  
         </div>
-            <div class="AWS Secret Manager">That's why we need AWS Secret Manager. We set there secret <mark>Github/Cypress/User_Roles</mark> which store data about User Roles (their usernames and passwords). If you want to edit/add secrets:
+            <div class="aws-secret-manager">That's why we need AWS Secret Manager. We set there secret <mark>Github/Cypress/User_Roles</mark> which store data about User Roles (their usernames and passwords). If you want to edit/add secrets:
         </div>
-        <div class="GoogleSAMLPowerUserRole">
+        <div class="google-saml-power-user-role">
                 <ol>
                     <li>Go to the AWS (use AWS SSO, which you can find in <mark>Google apps</mark> in your Bowery Gmail account).</li>
                     <li>Select <mark>GoogleSAMLPowerUserRole</mark> in <mark>bowery-prod</mark> section.</li>
@@ -131,7 +131,7 @@
                     <li>Paste secret name you want to edit or create your own (IMPORTANT: Naming convention for such secrets should be next - Github/Cypress/**, like <mark>Github/Cypress/User_Roles</mark> ).</li>
                 </ol>
             </div>
-            <div class="User code">Code of custom action can be found <a href="https://github.com/Bowery-RES/action-run-e2e-tests">here</a>. Flow of credentials exposing into execution environment (this is why we don't need to write or somehow add secret info into codebase):
+            <div class="user-code">Code of custom action can be found <a href="https://github.com/Bowery-RES/action-run-e2e-tests">here</a>. Flow of credentials exposing into execution environment (this is why we don't need to write or somehow add secret info into codebase):
         </div>   
         <div class="prefix">
             <ol>
